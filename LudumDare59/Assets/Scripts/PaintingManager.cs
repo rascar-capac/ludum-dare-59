@@ -29,6 +29,11 @@ public class PaintingManager : Singleton<PaintingManager>
 
         _currentPaintingIndex++;
 
+        while (_currentPaintingIndex < _paintings.Count && !_paintings[_currentPaintingIndex].IsEnabled)
+        {
+            _currentPaintingIndex++;
+        }
+
         if (_currentPaintingIndex < _paintings.Count)
         {
             await SceneManager.LoadSceneAsync(_paintings[_currentPaintingIndex].SceneName, LoadSceneMode.Additive);
@@ -76,6 +81,7 @@ public class PaintingManager : Singleton<PaintingManager>
     [Serializable]
     public struct PaintingInfo
     {
+        public bool IsEnabled;
         public string SceneName;
         public Texture2D Original;
         public SerializableDictionary<TuningType, float> Combination;

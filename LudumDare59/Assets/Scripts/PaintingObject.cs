@@ -50,6 +50,12 @@ public class PaintingObject : MonoBehaviour
         GenerateScaleSeed();
     }
 
+    [ContextMenu("Set rotation to zero")]
+    private void SetRotationToZero()
+    {
+        _rotationSeed = Quaternion.identity;
+    }
+
     public void ApplyTransformation(float intensity01)
     {
         //TODO: tween

@@ -46,13 +46,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PaintingManager
   _destroyOnLoad: 1
   _paintings:
-  - SceneName: Painting1
+  - IsEnabled: 1
+    SceneName: Painting1
     Original: {fileID: 2800000, guid: 48c62d3031e6fbb46842f6dd11e3ab36, type: 3}
     Combination:
       _keyValueList:
       - _key: 1
         _value: 0.3
-  - SceneName: Painting2
-    Original: {fileID: 0}
+  - IsEnabled: 1
+    SceneName: Painting2
+    Original: {fileID: 2800000, guid: fe482f304f0234e468c225749bbf1845, type: 3}
     Combination:
-      _keyValueList: []
+      _keyValueList:
+      - _key: 1
+        _value: 0.7
+  - IsEnabled: 1
+    SceneName: Painting3
+    Original: {fileID: 2800000, guid: 278121acf07bae0429dc813b2362ed38, type: 3}
+    Combination:
+      _keyValueList:
+      - _key: 1
+        _value: 0.6
+  - IsEnabled: 1
+    SceneName: Painting4
+    Original: {fileID: 2800000, guid: 409d1b690e6a8eb44be6a18b7a11f502, type: 3}
+    Combination:
+      _keyValueList:
+      - _key: 1
+        _value: 0.3469
+  - IsEnabled: 1
+    SceneName: Painting5
+    Original: {fileID: 2800000, guid: 9095fd3c70c84d744b01d7232bbb35ce, type: 3}
+    Combination:
+      _keyValueList:
+      - _key: 1
+        _value: 0.8579
