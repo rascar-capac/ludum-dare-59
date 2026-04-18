@@ -1,3 +1,5 @@
+using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
 public class PaintingObject : MonoBehaviour
@@ -28,18 +30,21 @@ public class PaintingObject : MonoBehaviour
     private void GenerateTranslationSeed()
     {
         _translationSeed = _params.GetRandomTranslation();
+        EditorUtility.SetDirty(this);
     }
 
     [ContextMenu("Generate random rotation seed")]
     private void GenerateRotationSeed()
     {
         _rotationSeed = _params.GetRandomRotation();
+        EditorUtility.SetDirty(this);
     }
 
     [ContextMenu("Generate random scale seed")]
     private void GenerateScaleSeed()
     {
         _scaleSeed = _params.GetRandomScale();
+        EditorUtility.SetDirty(this);
     }
 
     [ContextMenu("Generate all")]
@@ -64,6 +69,6 @@ public class PaintingObject : MonoBehaviour
         transform.SetPositionAndRotation(newPosition, newRotation);
 
         Vector3 newScale = _initialScale + intensity01 * _scaleSeed;
-        transform.localScale = newScale;
+        transform.localScale = math.abs(newScale);
     }
 }

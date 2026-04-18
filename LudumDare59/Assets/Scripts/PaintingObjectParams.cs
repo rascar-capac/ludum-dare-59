@@ -6,11 +6,9 @@ using Random = UnityEngine.Random;
 public class PaintingObjectParams : ScriptableObject
 {
     [SerializeField] private Vector2 _minMaxTranslationFactor;
-    // [SerializeField] private Vector2 _minMaxRotationFactor;
     [SerializeField] private Vector2 _minMaxScaleFactor;
 
     public Vector2 MinMaxTranslationFactor => _minMaxTranslationFactor;
-    // public Vector2 MinMaxRotationFactor => _minMaxRotationFactor;
     public Vector2 MinMaxScaleFactor => _minMaxScaleFactor;
 
     public Vector3 GetRandomTranslation()
@@ -25,6 +23,6 @@ public class PaintingObjectParams : ScriptableObject
 
     public Vector3 GetRandomScale()
     {
-        return math.remap(0, 1, _minMaxScaleFactor.x, _minMaxScaleFactor.y, math.abs(Random.insideUnitSphere));
+        return math.remap(0, 1, _minMaxScaleFactor.x, _minMaxScaleFactor.y, Random.insideUnitSphere);
     }
 }
