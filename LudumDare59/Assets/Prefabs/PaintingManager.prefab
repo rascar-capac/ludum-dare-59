@@ -45,6 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintingManager
   _destroyOnLoad: 1
-  _paintingScenes:
-  - Painting1
-  - Painting2
+  _paintings:
+  - SceneName: Painting1
+    Original: {fileID: 2800000, guid: 48c62d3031e6fbb46842f6dd11e3ab36, type: 3}
+    Combination:
+      _keyValueList:
+      - _key: 1
+        _value: 0.5
+  - SceneName: Painting2
+    Original: {fileID: 0}
+    Combination:
+      _keyValueList: []

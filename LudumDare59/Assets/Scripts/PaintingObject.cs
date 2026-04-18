@@ -52,8 +52,8 @@ public class PaintingObject : MonoBehaviour
 
     public void ApplyTransformation(float intensity01)
     {
+        //TODO: tween
         Vector3 newPosition = _initialPosition + intensity01 * _translationSeed;
-        //TODO: handle negative values
         Quaternion newRotation = Quaternion.Slerp(_initialRotation, _rotationSeed, intensity01);
         transform.SetPositionAndRotation(newPosition, newRotation);
 
