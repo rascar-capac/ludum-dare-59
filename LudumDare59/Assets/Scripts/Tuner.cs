@@ -6,7 +6,7 @@ public class Tuner : Singleton<Tuner>
 
     public static void RegisterPaintingObject(PaintingObject paintingObject)
     {
-        if (!Instance._paintingObjectList.Contains(paintingObject))
+        if (HasInstance && !Instance._paintingObjectList.Contains(paintingObject))
         {
             Instance._paintingObjectList.Add(paintingObject);
         }
@@ -14,7 +14,10 @@ public class Tuner : Singleton<Tuner>
 
     public static void UnregisterPaintingObject(PaintingObject paintingObject)
     {
-        Instance._paintingObjectList.Remove(paintingObject);
+        if (HasInstance)
+        {
+            Instance._paintingObjectList.Remove(paintingObject);
+        }
     }
 
     public static void ApplyTuning(TuningType type, float intensity01)
