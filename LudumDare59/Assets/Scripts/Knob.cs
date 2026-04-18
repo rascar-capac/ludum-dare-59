@@ -52,7 +52,6 @@ public class Knob : MonoBehaviour, IInteractable
     {
         _currentMouseOffsetX += Mouse.current.delta.ReadValue().x;
         float value = _initialValue + _currentMouseOffsetX / _maxOffsetInPixels;
-        value = Mathf.Clamp01(value);
 
         if (_currentValue != value)
         {
