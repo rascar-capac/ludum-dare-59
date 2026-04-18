@@ -70,7 +70,7 @@ public class Tuner : Singleton<Tuner>
             return;
         }
 
-        if (!PaintingManager.PaintingIsLoaded)
+        if (!PaintingManager.PaintingIsLoaded || PaintingManager.CurrentPainting.Combination.Count == 0)
         {
             return;
         }
