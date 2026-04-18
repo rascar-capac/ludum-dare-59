@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FMOD.Studio;
+using FMODUnity;
 using Rascar.Toolbox.Collections;
 using UnityEngine;
 
@@ -9,9 +11,18 @@ public class Tuner : Singleton<Tuner>
 {
     [SerializeField] private SerializableDictionary<TuningType, TuningInfo> _tuningInfoList;
     [SerializeField] private float _delayAfterCompletion = 1f;
+    [SerializeField] private EventReference _tuningCompleteSfx;
 
     private List<PaintingObject> _paintingObjectList = new();
     private bool _isCompleting;
+    private EventInstance _tuningCompleteSfxInstance;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _tuningCompleteSfxInstance = RuntimeManager.CreateInstance(_tuningCompleteSfx);
+    }
 
     public static void RegisterPaintingObject(PaintingObject paintingObject)
     {
@@ -101,6 +112,8 @@ public class Tuner : Singleton<Tuner>
     private async Task CompleteTuningAsync()
     {
         _isCompleting = true;
+
+        _tuningCompleteSfxInstance.start();
 
         //TODO should probably go through GameManager instead
         await PaintingManager.ShowNextPaintingAsync();

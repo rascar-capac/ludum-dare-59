@@ -87,6 +87,13 @@ MonoBehaviour:
         Knob: {fileID: 8495920911077585011}
         Tolerance: 0.1
   _delayAfterCompletion: 1
+  _tuningCompleteSfx:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1001 &314838215936137546
 PrefabInstance:
   m_ObjectHideFlags: 0
