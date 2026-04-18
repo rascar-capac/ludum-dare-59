@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 661527322886510323}
   - component: {fileID: 5676498504551231905}
-  - component: {fileID: 8909673363467857726}
   - component: {fileID: 1132519928697011825}
   m_Layer: 0
   m_Name: PaintingCamera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8909673363467857726
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6543360063274202492}
-  m_Enabled: 1
 --- !u!114 &1132519928697011825
 MonoBehaviour:
   m_ObjectHideFlags: 0

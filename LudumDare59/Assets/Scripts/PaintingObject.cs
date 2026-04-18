@@ -16,6 +16,12 @@ public class PaintingObject : MonoBehaviour
         _initialPosition = transform.position;
         _initialRotation = transform.rotation;
         _initialScale = transform.localScale;
+        Tuner.RegisterPaintingObject(this);
+    }
+
+    private void OnDestroy()
+    {
+        Tuner.UnregisterPaintingObject(this);
     }
 
     [ContextMenu("Generate random translation seed")]
@@ -44,14 +50,14 @@ public class PaintingObject : MonoBehaviour
         GenerateScaleSeed();
     }
 
-    public void ApplyTransformation(float knobValue01)
+    public void ApplyTransformation(float intensity01)
     {
-        Vector3 newPosition = _initialPosition + knobValue01 * _translationSeed;
+        Vector3 newPosition = _initialPosition + intensity01 * _translationSeed;
         //TODO: handle negative values
-        Quaternion newRotation = Quaternion.Slerp(_initialRotation, _rotationSeed, knobValue01);
+        Quaternion newRotation = Quaternion.Slerp(_initialRotation, _rotationSeed, intensity01);
         transform.SetPositionAndRotation(newPosition, newRotation);
 
-        Vector3 newScale = _initialScale + knobValue01 * _scaleSeed;
+        Vector3 newScale = _initialScale + intensity01 * _scaleSeed;
         transform.localScale = newScale;
     }
 }
