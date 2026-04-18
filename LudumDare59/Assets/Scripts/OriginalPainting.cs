@@ -21,7 +21,17 @@ public class OriginalPainting : MonoBehaviour
 
     private void Refresh()
     {
-        Texture2D paintingTexture = PaintingManager.CurrentPainting.Original;
+        Texture2D paintingTexture;
+
+        if (PaintingManager.PaintingIsLoaded)
+        {
+            paintingTexture = PaintingManager.CurrentPainting.Original;
+        }
+        else
+        {
+            paintingTexture = null;
+        }
+
         _paintingRenderer.material.SetTexture("_BaseMap", paintingTexture);
     }
 }

@@ -10,22 +10,31 @@ public class PaintingManager : Singleton<PaintingManager>
     [SerializeField] private List<PaintingInfo> _paintings;
 
     private int _currentPaintingIndex;
+    private bool _paintingIsLoaded;
 
-    public static PaintingInfo CurrentPainting => Instance._paintings[Instance._currentPaintingIndex];
+    public static PaintingInfo CurrentPainting => PaintingIsLoaded ? Instance._paintings[Instance._currentPaintingIndex] : default;
+    public static bool PaintingIsLoaded => Instance._paintingIsLoaded;
 
     public static event Action OnPaintingChanged;
 
-    [ContextMenu("Show Next Painting")]
-    public async Task ShowNextPaintingAsync()
+    public static async Task ShowNextPaintingAsync() => await Instance.ShowNextPaintingAsync_Internal();
+    private async Task ShowNextPaintingAsync_Internal()
     {
         if (_currentPaintingIndex >= 0 && _currentPaintingIndex < _paintings.Count && SceneManager.GetSceneByName(_paintings[_currentPaintingIndex].SceneName).isLoaded)
         {
             await SceneManager.UnloadSceneAsync(_paintings[_currentPaintingIndex].SceneName);
+
+            _paintingIsLoaded = false;
         }
 
         _currentPaintingIndex++;
 
-        await SceneManager.LoadSceneAsync(_paintings[_currentPaintingIndex].SceneName, LoadSceneMode.Additive);
+        if (_currentPaintingIndex < _paintings.Count)
+        {
+            await SceneManager.LoadSceneAsync(_paintings[_currentPaintingIndex].SceneName, LoadSceneMode.Additive);
+
+            _paintingIsLoaded = true;
+        }
 
         //maybe in Gamemanager instead?
         OnPaintingChanged.Invoke();
@@ -58,6 +67,8 @@ public class PaintingManager : Singleton<PaintingManager>
             if (SceneManager.GetSceneByName(painting.SceneName).isLoaded)
             {
                 await SceneManager.UnloadSceneAsync(painting.SceneName);
+
+                _paintingIsLoaded = false;
             }
         }
     }

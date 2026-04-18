@@ -9,10 +9,13 @@ public class Knob : MonoBehaviour, IInteractable
     [SerializeField] private Transform _cursor;
     // [SerializeField] private TMP_Text _value;
     [SerializeField] private int _maxOffsetInPixels;
+    [SerializeField] private float _currentValue;
 
     private float _initialValue;
-    private float _currentValue;
     private float _currentMouseOffsetX;
+
+    public bool IsUsed { get; private set; }
+    public float Value => _currentValue;
 
     public UnityEvent OnValueChanged { get; } = new();
 
@@ -20,6 +23,7 @@ public class Knob : MonoBehaviour, IInteractable
     {
         _initialValue = _currentValue;
         _currentMouseOffsetX = 0f;
+        IsUsed = true;
     }
 
     public void HoldInteraction(RaycastHit hitInfo)
@@ -27,7 +31,10 @@ public class Knob : MonoBehaviour, IInteractable
         UpdateValue();
     }
 
-    public void StopInteraction() { }
+    public void StopInteraction()
+    {
+        IsUsed = false;
+    }
 
     private void Awake()
     {
@@ -39,16 +46,15 @@ public class Knob : MonoBehaviour, IInteractable
         _currentMouseOffsetX += Mouse.current.delta.ReadValue().x;
         float value = _initialValue + _currentMouseOffsetX / _maxOffsetInPixels;
         value = Mathf.Clamp01(value);
-        SetValue(value);
+
+        if (_currentValue != value)
+        {
+            SetValue(value);
+        }
     }
 
     public void SetValue(float value, bool notify = true)
     {
-        if (_currentValue == value)
-        {
-            return;
-        }
-
         _cursor.rotation = Quaternion.Euler(_cursor.rotation.x, _cursor.rotation.y, value * -360f);
         // _fill.fillAmount = value;
         // _value.text = value.ToString("N1");
@@ -58,6 +64,16 @@ public class Knob : MonoBehaviour, IInteractable
         {
             Tuner.ApplyTuning(_tuningType, value);
             OnValueChanged.Invoke();
+        }
+    }
+
+    private void OnValidate()
+    {
+        _currentValue = Mathf.Clamp01(_currentValue);
+
+        if (Application.isPlaying)
+        {
+            SetValue(_currentValue);
         }
     }
 }

@@ -51,7 +51,7 @@ MonoBehaviour:
     Combination:
       _keyValueList:
       - _key: 1
-        _value: 0.5
+        _value: 0.3
   - SceneName: Painting2
     Original: {fileID: 0}
     Combination:
