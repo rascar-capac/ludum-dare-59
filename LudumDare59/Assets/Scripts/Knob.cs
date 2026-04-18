@@ -13,6 +13,7 @@ public class Knob : MonoBehaviour, IInteractable
 
     private float _initialValue;
     private float _currentMouseOffsetX;
+    private bool _isEnabled;
 
     public bool IsUsed { get; private set; }
     public float Value => _currentValue;
@@ -39,6 +40,12 @@ public class Knob : MonoBehaviour, IInteractable
     private void Awake()
     {
         SetValue(0f, notify: false);
+        PaintingManager.OnPaintingChanged += PaintingManager_OnPaintingChanged;
+    }
+
+    private void OnDestroy()
+    {
+        PaintingManager.OnPaintingChanged -= PaintingManager_OnPaintingChanged;
     }
 
     private void UpdateValue()
@@ -75,5 +82,11 @@ public class Knob : MonoBehaviour, IInteractable
         {
             SetValue(_currentValue);
         }
+    }
+
+    private void PaintingManager_OnPaintingChanged()
+    {
+        //TODO: tween and disable during it
+        SetValue(0f, notify: false);
     }
 }
