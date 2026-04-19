@@ -21,7 +21,7 @@ public class Tuner : Singleton<Tuner>
     {
         base.Awake();
 
-        _tuningCompleteSfxInstance = RuntimeManager.CreateInstance(_tuningCompleteSfx);
+        // _tuningCompleteSfxInstance = RuntimeManager.CreateInstance(_tuningCompleteSfx);
     }
 
     public static void RegisterPaintingObject(PaintingObject paintingObject)
