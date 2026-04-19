@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000002, guid: ceb223e120372e746b1aa0f21faabcc5, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: ceb223e120372e746b1aa0f21faabcc5, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: a860cb4b4d7b14d45882e65bbecc788b, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -834,18 +834,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -36.653
       objectReference: {fileID: 0}
-    - target: {fileID: 9008569067820534773, guid: 497b03bcc00f3804799413f1a1f9941f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9136874
-      objectReference: {fileID: 0}
-    - target: {fileID: 9008569067820534773, guid: 497b03bcc00f3804799413f1a1f9941f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.40641773
-      objectReference: {fileID: 0}
-    - target: {fileID: 9008569067820534773, guid: 497b03bcc00f3804799413f1a1f9941f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 47.96
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -902,26 +890,6 @@ PrefabInstance:
     - target: {fileID: 7568987908987272383, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
       propertyPath: m_Name
       value: PaintingManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
-      propertyPath: _paintings.Array.data[0].Channels._keyValueList.Array.data[0]._value.TargetValue
-      value: -0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
-      propertyPath: _paintings.Array.data[1].Channels._keyValueList.Array.data[0]._value.TargetValue
-      value: -0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
-      propertyPath: _paintings.Array.data[2].Channels._keyValueList.Array.data[0]._value.TargetValue
-      value: -0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
-      propertyPath: _paintings.Array.data[3].Channels._keyValueList.Array.data[0]._value.TargetValue
-      value: -0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
-      propertyPath: _paintings.Array.data[4].Channels._keyValueList.Array.data[0]._value.TargetValue
-      value: -0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
