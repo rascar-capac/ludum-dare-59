@@ -96,6 +96,47 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  _screenRenderer: {fileID: 1488763039914355601}
+  _screenFlashInTweenSettings:
+    startFromCurrent: 0
+    startValue: 0
+    endValue: 1
+    settings:
+      duration: 0.4
+      ease: 15
+      customEase:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      cycles: 1
+      cycleMode: 0
+      startDelay: 0
+      endDelay: 0
+      useUnscaledTime: 0
+      _useFixedUpdate: 0
+      _updateType: 0
+  _screenFlashOutTweenSettings:
+    startFromCurrent: 0
+    startValue: 1
+    endValue: 0
+    settings:
+      duration: 1
+      ease: 3
+      customEase:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      cycles: 1
+      cycleMode: 0
+      startDelay: 0
+      endDelay: 0
+      useUnscaledTime: 0
+      _useFixedUpdate: 0
+      _updateType: 0
 --- !u!1001 &314838215936137546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,6 +197,11 @@ PrefabInstance:
 --- !u!4 &1387029526458666377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1684697765576922307, guid: 3c1beda2a05b9944887ad0a1e27c7817, type: 3}
+  m_PrefabInstance: {fileID: 314838215936137546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1488763039914355601 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1222623569503335131, guid: 3c1beda2a05b9944887ad0a1e27c7817, type: 3}
   m_PrefabInstance: {fileID: 314838215936137546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1587774921453600739

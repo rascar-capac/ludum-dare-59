@@ -3,18 +3,19 @@ using UnityEngine;
 public class OriginalPainting : MonoBehaviour
 {
     [SerializeField] private Renderer _paintingRenderer;
+    [SerializeField] private Hand _hand;
 
     private void Awake()
     {
-        PaintingManager.OnPaintingChanged += PaintingManager_OnPaintingChanged;
+        _hand.OnHidden += Hand_OnHidden;
     }
 
     private void OnDestroy()
     {
-        PaintingManager.OnPaintingChanged -= PaintingManager_OnPaintingChanged;
+        _hand.OnHidden -= Hand_OnHidden;
     }
 
-    private void PaintingManager_OnPaintingChanged()
+    private void Hand_OnHidden()
     {
         Refresh();
     }

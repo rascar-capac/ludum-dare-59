@@ -46,8 +46,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65cd2e3d6cca38a4e98628f411376828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _showOriginalInput: {fileID: -4888689751203393432, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _shownHandAnchor: {fileID: 0}
+  _hiddenHandAnchor: {fileID: 0}
+  _delayBeforeSwitching: 1
+  _handSwitchTweenSettings:
+    duration: 0.4
+    ease: 15
+    customEase:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    cycles: 1
+    cycleMode: 0
+    startDelay: 0
+    endDelay: 0
+    useUnscaledTime: 0
+    _useFixedUpdate: 0
+    _updateType: 0
 --- !u!1 &3656075559840890244
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +206,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 38.469
       objectReference: {fileID: 0}
+    - target: {fileID: 1608093120282701595, guid: b797a7c7371d4ce4d8da7c11e4054a4b, type: 3}
+      propertyPath: _hand
+      value: 
+      objectReference: {fileID: 4301582569091682781}
     - target: {fileID: 2859624449395650924, guid: b797a7c7371d4ce4d8da7c11e4054a4b, type: 3}
       propertyPath: m_Name
       value: OriginalPainting

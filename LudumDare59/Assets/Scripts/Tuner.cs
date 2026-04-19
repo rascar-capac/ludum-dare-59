@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FMOD.Studio;
 using FMODUnity;
+using PrimeTween;
 using Rascar.Toolbox.Collections;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ public class Tuner : Singleton<Tuner>
     [SerializeField] private SerializableDictionary<TuningType, TuningInfo> _tuningInfoList;
     [SerializeField] private float _delayAfterCompletion = 1f;
     [SerializeField] private EventReference _tuningCompleteSfx;
+    [SerializeField] private Renderer _screenRenderer;
+    [SerializeField] private TweenSettings<float> _screenFlashInTweenSettings;
+    [SerializeField] private TweenSettings<float> _screenFlashOutTweenSettings;
 
     private List<PaintingObject> _paintingObjectList = new();
     private bool _isCompleting;
@@ -155,8 +159,12 @@ public class Tuner : Singleton<Tuner>
             _tuningCompleteSfxInstance.start();
         }
 
+        await Tween.MaterialProperty(_screenRenderer.material, Shader.PropertyToID("_FlashIntensity"), _screenFlashInTweenSettings);
+
         //TODO should probably go through GameManager instead
         await PaintingManager.ShowNextPaintingAsync();
+
+        await Tween.MaterialProperty(_screenRenderer.material, Shader.PropertyToID("_FlashIntensity"), _screenFlashOutTweenSettings);
 
         await Task.Delay((int)(_delayAfterCompletion * 1000));
 

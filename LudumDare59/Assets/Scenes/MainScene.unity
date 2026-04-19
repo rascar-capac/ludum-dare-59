@@ -359,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009857023}
   m_Layer: 0
-  m_Name: ShownHandAnchor
+  m_Name: HideHandAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,13 +373,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009857022}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.000000014901161, z: 0.0000000037252903, w: 1}
-  m_LocalPosition: {x: -0.5026, y: -0.3044, z: -0.3956}
+  m_LocalRotation: {x: 0.329029, y: -0.5275753, z: -0.13520658, w: 0.7714425}
+  m_LocalPosition: {x: -0.85, y: -0.234, z: -0.524}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.407, y: -75.9, z: -36.653}
 --- !u!1001 &528528816683336269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -625,7 +625,7 @@ PrefabInstance:
       value: Hand
       objectReference: {fileID: 0}
     - target: {fileID: 4301582569091682781, guid: 497b03bcc00f3804799413f1a1f9941f, type: 3}
-      propertyPath: _shownHandAnchor
+      propertyPath: _hiddenHandAnchor
       value: 
       objectReference: {fileID: 2009857023}
     - target: {fileID: 5422811328583362426, guid: 497b03bcc00f3804799413f1a1f9941f, type: 3}
