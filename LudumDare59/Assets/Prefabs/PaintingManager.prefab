@@ -54,14 +54,14 @@ MonoBehaviour:
       - _key: 1
         _value:
           TargetValue: 0.3
-          FmodParameters: 
+          FmodParameterName: Pitch
     TuningAudio:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -1576368972
+        Data2: 1180488576
+        Data3: 805828488
+        Data4: 1715371102
+      Path: event:/Tableau 1 (acor)
   - IsEnabled: 1
     SceneName: Painting2
     Original: {fileID: 2800000, guid: fe482f304f0234e468c225749bbf1845, type: 3}
@@ -70,14 +70,14 @@ MonoBehaviour:
       - _key: 1
         _value:
           TargetValue: 0.7
-          FmodParameters: 
+          FmodParameterName: Pitch
     TuningAudio:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1661806431
+        Data2: 1331354676
+        Data3: -1464825457
+        Data4: -412557431
+      Path: event:/Tableau 2 (melodi de lenfan)
   - IsEnabled: 1
     SceneName: Painting3
     Original: {fileID: 2800000, guid: 278121acf07bae0429dc813b2362ed38, type: 3}
@@ -86,14 +86,14 @@ MonoBehaviour:
       - _key: 1
         _value:
           TargetValue: 0.6
-          FmodParameters: 
+          FmodParameterName: Pitch
     TuningAudio:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -267266244
+        Data2: 1293598568
+        Data3: -2105910090
+        Data4: 767686417
+      Path: event:/Tableau 3 (la trompait)
   - IsEnabled: 1
     SceneName: Painting4
     Original: {fileID: 2800000, guid: 409d1b690e6a8eb44be6a18b7a11f502, type: 3}
@@ -102,14 +102,14 @@ MonoBehaviour:
       - _key: 1
         _value:
           TargetValue: 0.3469
-          FmodParameters: 
+          FmodParameterName: Pitch
     TuningAudio:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -651379781
+        Data2: 1277026666
+        Data3: 254255269
+        Data4: 607534723
+      Path: event:/Tableau 4 (trist)
   - IsEnabled: 1
     SceneName: Painting5
     Original: {fileID: 2800000, guid: 9095fd3c70c84d744b01d7232bbb35ce, type: 3}
@@ -118,11 +118,11 @@ MonoBehaviour:
       - _key: 1
         _value:
           TargetValue: 0.8579
-          FmodParameters: 
+          FmodParameterName: Pitch
     TuningAudio:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1511660437
+        Data2: 1321518698
+        Data3: -1332419917
+        Data4: -1497409022
+      Path: event:/Tableau 5 (le bouboum)

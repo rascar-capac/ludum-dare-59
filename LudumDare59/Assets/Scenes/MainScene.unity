@@ -903,6 +903,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PaintingManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
+      propertyPath: _paintings.Array.data[0].Channels._keyValueList.Array.data[0]._value.TargetValue
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
+      propertyPath: _paintings.Array.data[1].Channels._keyValueList.Array.data[0]._value.TargetValue
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
+      propertyPath: _paintings.Array.data[2].Channels._keyValueList.Array.data[0]._value.TargetValue
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
+      propertyPath: _paintings.Array.data[3].Channels._keyValueList.Array.data[0]._value.TargetValue
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197841076659723445, guid: f01414e6c49d5aa48baa14cc82338f8c, type: 3}
+      propertyPath: _paintings.Array.data[4].Channels._keyValueList.Array.data[0]._value.TargetValue
+      value: -0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
