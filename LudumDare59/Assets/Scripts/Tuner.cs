@@ -48,6 +48,7 @@ public class Tuner : Singleton<Tuner>
         }
         else if (_tuningAudioInstance.isValid())
         {
+            _tuningAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             _tuningAudioInstance.release();
         }
     }
@@ -151,6 +152,7 @@ public class Tuner : Singleton<Tuner>
 
         if (_tuningAudioInstance.isValid())
         {
+            _tuningAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             _tuningAudioInstance.release();
         }
 
