@@ -62,7 +62,7 @@ public class Knob : MonoBehaviour, IInteractable
 
     public void SetValue(float value, bool notify = true)
     {
-        _cursor.localRotation = Quaternion.Euler(_cursor.localRotation.x, _cursor.localRotation.y, value * -180f);
+        _cursor.localRotation = Quaternion.Euler(_cursor.localRotation.x, _cursor.localRotation.y, value * 180f);
         // _fill.fillAmount = value;
         // _value.text = value.ToString("N1");
         _currentValue = value;
