@@ -64,13 +64,13 @@ public class Tuner : Singleton<Tuner>
         }
     }
 
-    public static void ApplyTuning(TuningType type, float intensity01)
+    public static void ApplyTuning(TuningType type, float intensity)
     {
         switch (type)
         {
             case TuningType.Transformation:
 
-                Instance.ApplyTransformation(intensity01);
+                Instance.ApplyTransformation(intensity);
                 break;
 
             case TuningType.None:
@@ -78,20 +78,20 @@ public class Tuner : Singleton<Tuner>
                 break;
         }
 
-        RefreshTuningAudio(type, intensity01);
+        RefreshTuningAudio(type, intensity);
     }
 
-    private static void RefreshTuningAudio(TuningType type, float intensity01)
+    private static void RefreshTuningAudio(TuningType type, float intensity)
     {
         string parameterName = PaintingManager.CurrentPainting.Channels[type].FmodParameterName;
-        RuntimeManager.StudioSystem.setParameterByName(parameterName, intensity01);
+        RuntimeManager.StudioSystem.setParameterByName(parameterName, intensity / 2f + 0.5f);
     }
 
-    private void ApplyTransformation(float intensity01)
+    private void ApplyTransformation(float intensity)
     {
         foreach (PaintingObject paintingObject in _paintingObjectList)
         {
-            paintingObject.ApplyTransformation(intensity01);
+            paintingObject.ApplyTransformation(intensity);
         }
     }
 

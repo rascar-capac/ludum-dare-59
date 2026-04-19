@@ -52,6 +52,7 @@ public class Knob : MonoBehaviour, IInteractable
     {
         _currentMouseOffsetX += Mouse.current.delta.ReadValue().x;
         float value = _initialValue + _currentMouseOffsetX / _maxOffsetInPixels;
+        value = Mathf.Clamp(value, -1, 1);
 
         if (_currentValue != value)
         {
@@ -61,7 +62,7 @@ public class Knob : MonoBehaviour, IInteractable
 
     public void SetValue(float value, bool notify = true)
     {
-        _cursor.localRotation = Quaternion.Euler(_cursor.localRotation.x, _cursor.localRotation.y, value * -360f);
+        _cursor.localRotation = Quaternion.Euler(_cursor.localRotation.x, _cursor.localRotation.y, value * -180f);
         // _fill.fillAmount = value;
         // _value.text = value.ToString("N1");
         _currentValue = value;
@@ -75,7 +76,7 @@ public class Knob : MonoBehaviour, IInteractable
 
     private void OnValidate()
     {
-        _currentValue = Mathf.Clamp01(_currentValue);
+        _currentValue = Mathf.Clamp(_currentValue, -1, 1);
 
         if (Application.isPlaying && PaintingManager.PaintingIsLoaded)
         {
