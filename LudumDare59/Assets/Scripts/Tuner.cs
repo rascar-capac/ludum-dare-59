@@ -71,6 +71,11 @@ public class Tuner : Singleton<Tuner>
 
     public static void ApplyTuning(TuningType type, float intensity)
     {
+        if (!PaintingManager.PaintingIsLoaded)
+        {
+            return;
+        }
+
         switch (type)
         {
             case TuningType.Transformation:
@@ -88,6 +93,16 @@ public class Tuner : Singleton<Tuner>
 
     private static void RefreshTuningAudio(TuningType type, float intensity)
     {
+        if (!PaintingManager.CurrentPainting.Channels.TryGetValue(type, out PaintingManager.ChannelInfo channel))
+        {
+            return;
+        }
+
+        if (Instance._tuningInfoList.TryGetValue(type, out TuningInfo tuningInfo) && tuningInfo.ApproximatelyEquals(channel.TargetValue))
+        {
+            intensity = channel.TargetValue;
+        }
+
         string parameterName = PaintingManager.CurrentPainting.Channels[type].FmodParameterName;
         RuntimeManager.StudioSystem.setParameterByName(parameterName, intensity);
     }

@@ -189,7 +189,7 @@ MonoBehaviour:
     - _key: 1
       _value:
         Knob: {fileID: 8495920911077585011}
-        Tolerance: 0.05
+        Tolerance: 0.03
   _delayAfterCompletion: 1
   _tuningCompleteSfx:
     Guid:
