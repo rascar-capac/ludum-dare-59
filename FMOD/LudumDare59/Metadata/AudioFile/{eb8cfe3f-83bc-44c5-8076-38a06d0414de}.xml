@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{eb8cfe3f-83bc-44c5-8076-38a06d0414de}">
+		<property name="assetPath">
+			<value>Tris Aigu.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.8571458333333331</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{77869047-5dd9-482a-bc32-8b94a5ac9873}</destination>
+		</relationship>
+	</object>
+</objects>

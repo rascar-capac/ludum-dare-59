@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c2be4fc0-4427-4261-ae53-ea1ec120b422}">
+		<property name="assetPath">
+			<value>Tris Delay.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.8571249999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{77869047-5dd9-482a-bc32-8b94a5ac9873}</destination>
+		</relationship>
+	</object>
+</objects>

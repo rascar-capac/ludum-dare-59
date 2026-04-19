@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{296cb71a-400b-47d6-87a9-313bad676993}">
+		<property name="assetPath">
+			<value>Tris Grav.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.8571458333333331</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{77869047-5dd9-482a-bc32-8b94a5ac9873}</destination>
+		</relationship>
+	</object>
+</objects>

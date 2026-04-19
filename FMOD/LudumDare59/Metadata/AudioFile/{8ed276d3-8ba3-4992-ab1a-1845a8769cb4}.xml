@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{8ed276d3-8ba3-4992-ab1a-1845a8769cb4}">
+		<property name="assetPath">
+			<value>Boumboum.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>9.5999999999999996</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{77869047-5dd9-482a-bc32-8b94a5ac9873}</destination>
+		</relationship>
+	</object>
+</objects>
