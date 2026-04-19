@@ -154,6 +154,12 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{ce83d8fb-7893-4664-b473-f0c137d714c1}">
+		<property name="start">
+			<value>-1</value>
+		</property>
+		<property name="length">
+			<value>2</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -181,6 +187,12 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{de83ac18-bafa-4c5d-aaf9-6d1010cd3b6b}">
+		<property name="start">
+			<value>-1</value>
+		</property>
+		<property name="length">
+			<value>2</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -208,6 +220,12 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{c97d56ea-60ca-4122-a709-1ff9ed7203cc}">
+		<property name="start">
+			<value>-1</value>
+		</property>
+		<property name="length">
+			<value>2</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -425,7 +443,7 @@
 	</object>
 	<object class="AutomationPoint" id="{d7a1fcd4-7066-4937-b06b-2b38d796e055}">
 		<property name="position">
-			<value>0.30000000000000004</value>
+			<value>-0.39999999999999991</value>
 		</property>
 		<property name="value">
 			<value>-80</value>
@@ -436,7 +454,7 @@
 	</object>
 	<object class="AutomationPoint" id="{ddbdd3f8-8077-4662-9d20-492705d9149f}">
 		<property name="position">
-			<value>0</value>
+			<value>-1</value>
 		</property>
 		<property name="value">
 			<value>-25</value>
@@ -513,7 +531,7 @@
 	</object>
 	<object class="AutomationPoint" id="{64a8af67-4f18-4e43-aba0-fc389d38170f}">
 		<property name="position">
-			<value>0.29938744257274119</value>
+			<value>-0.40122511485451762</value>
 		</property>
 		<property name="value">
 			<value>-5.00000381</value>
@@ -529,7 +547,7 @@
 	</object>
 	<object class="AutomationPoint" id="{429d2bc1-0bc0-42a9-8385-021383698028}">
 		<property name="position">
-			<value>0</value>
+			<value>-1</value>
 		</property>
 		<property name="value">
 			<value>-17</value>
@@ -537,7 +555,7 @@
 	</object>
 	<object class="AutomationPoint" id="{34c31695-a78d-4a29-bbc1-d64e38facfab}">
 		<property name="position">
-			<value>0.3001531393568147</value>
+			<value>-0.3996937212863706</value>
 		</property>
 		<property name="value">
 			<value>-11</value>
@@ -545,7 +563,7 @@
 	</object>
 	<object class="AutomationPoint" id="{d1c8bcb6-c9e9-47a5-a4e9-efc460cdff47}">
 		<property name="position">
-			<value>0</value>
+			<value>-1</value>
 		</property>
 		<property name="value">
 			<value>-5</value>
@@ -561,7 +579,7 @@
 	</object>
 	<object class="AutomationPoint" id="{57e2999b-8df0-4422-8b24-1c6735cf468b}">
 		<property name="position">
-			<value>0.30084745762711862</value>
+			<value>-0.39830508474576276</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -569,7 +587,7 @@
 	</object>
 	<object class="AutomationPoint" id="{24e27c53-4d99-4374-919a-2d640db35ccb}">
 		<property name="position">
-			<value>0</value>
+			<value>-1</value>
 		</property>
 		<property name="value">
 			<value>3.4000001</value>
@@ -585,7 +603,7 @@
 	</object>
 	<object class="AutomationPoint" id="{106a3590-9a18-4876-8fef-caebae66bcea}">
 		<property name="position">
-			<value>0.29999999999999999</value>
+			<value>-0.40000000000000002</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -601,7 +619,7 @@
 	</object>
 	<object class="AutomationPoint" id="{35da51fb-edea-445f-a7ea-3269872b5e82}">
 		<property name="position">
-			<value>0</value>
+			<value>-1</value>
 		</property>
 		<property name="value">
 			<value>3.4000001</value>
@@ -609,7 +627,7 @@
 	</object>
 	<object class="AutomationPoint" id="{907b02b0-95b0-4796-9ae8-07ae44892d97}">
 		<property name="position">
-			<value>0.29833156779661019</value>
+			<value>-0.40333686440677963</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -625,7 +643,7 @@
 	</object>
 	<object class="AutomationPoint" id="{f289ea5a-42ad-42b6-9b34-916b138c9e3a}">
 		<property name="position">
-			<value>0</value>
+			<value>-1</value>
 		</property>
 		<property name="value">
 			<value>12</value>

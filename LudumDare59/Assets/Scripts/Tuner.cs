@@ -88,7 +88,7 @@ public class Tuner : Singleton<Tuner>
     private static void RefreshTuningAudio(TuningType type, float intensity)
     {
         string parameterName = PaintingManager.CurrentPainting.Channels[type].FmodParameterName;
-        RuntimeManager.StudioSystem.setParameterByName(parameterName, intensity / 2f + 0.5f);
+        RuntimeManager.StudioSystem.setParameterByName(parameterName, intensity);
     }
 
     private void ApplyTransformation(float intensity)
