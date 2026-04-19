@@ -16,12 +16,36 @@ public class Tuner : Singleton<Tuner>
     private List<PaintingObject> _paintingObjectList = new();
     private bool _isCompleting;
     private EventInstance _tuningCompleteSfxInstance;
+    private EventInstance _tuningAudioInstance;
 
     protected override void Awake()
     {
         base.Awake();
 
-        // _tuningCompleteSfxInstance = RuntimeManager.CreateInstance(_tuningCompleteSfx);
+        if (!_tuningCompleteSfx.IsNull)
+        {
+            _tuningCompleteSfxInstance = RuntimeManager.CreateInstance(_tuningCompleteSfx);
+        }
+
+        PaintingManager.OnPaintingChanged += PaintingManager_OnPaintingChanged;
+    }
+
+    private void OnDestroy()
+    {
+        PaintingManager.OnPaintingChanged += PaintingManager_OnPaintingChanged;
+    }
+
+    private void PaintingManager_OnPaintingChanged()
+    {
+        if (PaintingManager.PaintingIsLoaded && !PaintingManager.CurrentPainting.TuningAudio.IsNull)
+        {
+            _tuningAudioInstance = RuntimeManager.CreateInstance(PaintingManager.CurrentPainting.TuningAudio);
+            _tuningAudioInstance.start();
+        }
+        else if (_tuningAudioInstance.isValid())
+        {
+            _tuningAudioInstance.release();
+        }
     }
 
     public static void RegisterPaintingObject(PaintingObject paintingObject)
@@ -53,6 +77,14 @@ public class Tuner : Singleton<Tuner>
 
                 break;
         }
+
+        RefreshTuningAudio(type, intensity01);
+    }
+
+    private static void RefreshTuningAudio(TuningType type, float intensity01)
+    {
+        string parameterName = PaintingManager.CurrentPainting.Channels[type].FmodParameterName;
+        RuntimeManager.StudioSystem.setParameterByName(parameterName, intensity01);
     }
 
     private void ApplyTransformation(float intensity01)
@@ -81,7 +113,7 @@ public class Tuner : Singleton<Tuner>
             return;
         }
 
-        if (!PaintingManager.PaintingIsLoaded || PaintingManager.CurrentPainting.Combination.Count == 0)
+        if (!PaintingManager.PaintingIsLoaded || PaintingManager.CurrentPainting.Channels.Count == 0)
         {
             return;
         }
@@ -91,7 +123,7 @@ public class Tuner : Singleton<Tuner>
             return;
         }
 
-        foreach ((TuningType type, float value) in PaintingManager.CurrentPainting.Combination)
+        foreach ((TuningType type, PaintingManager.ChannelInfo channel) in PaintingManager.CurrentPainting.Channels)
         {
             if (!_tuningInfoList.TryGetValue(type, out TuningInfo tuningInfo) || tuningInfo.Knob == null)
             {
@@ -100,7 +132,7 @@ public class Tuner : Singleton<Tuner>
                 return;
             }
 
-            if (!tuningInfo.ApproximatelyEquals(value))
+            if (!tuningInfo.ApproximatelyEquals(channel.TargetValue))
             {
                 return;
             }
@@ -113,7 +145,15 @@ public class Tuner : Singleton<Tuner>
     {
         _isCompleting = true;
 
-        _tuningCompleteSfxInstance.start();
+        if (_tuningAudioInstance.isValid())
+        {
+            _tuningAudioInstance.release();
+        }
+
+        if (_tuningCompleteSfxInstance.isValid())
+        {
+            _tuningCompleteSfxInstance.start();
+        }
 
         //TODO should probably go through GameManager instead
         await PaintingManager.ShowNextPaintingAsync();

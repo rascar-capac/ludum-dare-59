@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FMODUnity;
 using Rascar.Toolbox.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -84,6 +85,15 @@ public class PaintingManager : Singleton<PaintingManager>
         public bool IsEnabled;
         public string SceneName;
         public Texture2D Original;
-        public SerializableDictionary<TuningType, float> Combination;
+        public SerializableDictionary<TuningType, ChannelInfo> Channels;
+        public EventReference TuningAudio;
+    }
+
+    [Serializable]
+    public struct ChannelInfo
+    {
+        public float TargetValue;
+        [ParamRef]
+        public string FmodParameterName;
     }
 }

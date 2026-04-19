@@ -77,7 +77,7 @@ public class Knob : MonoBehaviour, IInteractable
     {
         _currentValue = Mathf.Clamp01(_currentValue);
 
-        if (Application.isPlaying)
+        if (Application.isPlaying && PaintingManager.PaintingIsLoaded)
         {
             SetValue(_currentValue);
         }
