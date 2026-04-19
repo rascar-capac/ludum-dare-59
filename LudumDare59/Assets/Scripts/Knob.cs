@@ -66,10 +66,10 @@ public class Knob : MonoBehaviour, IInteractable
         // _fill.fillAmount = value;
         // _value.text = value.ToString("N1");
         _currentValue = value;
+        Tuner.ApplyTuning(_tuningType, value);
 
         if (notify)
         {
-            Tuner.ApplyTuning(_tuningType, value);
             OnValueChanged.Invoke();
         }
     }
