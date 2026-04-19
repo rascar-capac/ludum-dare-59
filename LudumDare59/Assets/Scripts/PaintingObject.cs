@@ -1,6 +1,9 @@
 using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PaintingObject : MonoBehaviour
 {
@@ -30,21 +33,27 @@ public class PaintingObject : MonoBehaviour
     private void GenerateTranslationSeed()
     {
         _translationSeed = _params.GetRandomTranslation();
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
     [ContextMenu("Generate random rotation seed")]
     private void GenerateRotationSeed()
     {
         _rotationSeed = _params.GetRandomRotation();
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
     [ContextMenu("Generate random scale seed")]
     private void GenerateScaleSeed()
     {
         _scaleSeed = _params.GetRandomScale();
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
     [ContextMenu("Generate all")]

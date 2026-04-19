@@ -17,6 +17,7 @@ public class PaintingManager : Singleton<PaintingManager>
     public static bool PaintingIsLoaded => Instance._paintingIsLoaded;
 
     public static event Action OnPaintingChanged;
+    public static event Action OnAllPaintingShown;
 
     public static async Task ShowNextPaintingAsync() => await Instance.ShowNextPaintingAsync_Internal();
     private async Task ShowNextPaintingAsync_Internal()
@@ -41,6 +42,10 @@ public class PaintingManager : Singleton<PaintingManager>
 
             _paintingIsLoaded = true;
         }
+        else
+        {
+            OnAllPaintingShown?.Invoke();
+        }
 
         //maybe in Gamemanager instead?
         OnPaintingChanged.Invoke();
@@ -51,12 +56,6 @@ public class PaintingManager : Singleton<PaintingManager>
         base.Awake();
 
         await ResetAsync();
-    }
-
-    private async void Start()
-    {
-        //TODO: in a game manager
-        await ShowNextPaintingAsync();
     }
 
     public async Task ResetAsync()
