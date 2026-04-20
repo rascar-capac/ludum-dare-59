@@ -69,7 +69,7 @@ public class Tuner : Singleton<Tuner>
         }
     }
 
-    public static void ApplyTuning(TuningType type, float intensity)
+    public static void ApplyTuning(TuningType type, float value)
     {
         if (!PaintingManager.PaintingIsLoaded)
         {
@@ -80,7 +80,7 @@ public class Tuner : Singleton<Tuner>
         {
             case TuningType.Transformation:
 
-                Instance.ApplyTransformation(intensity);
+                Instance.ApplyTransformation(value);
                 break;
 
             case TuningType.None:
@@ -88,10 +88,10 @@ public class Tuner : Singleton<Tuner>
                 break;
         }
 
-        RefreshTuningAudio(type, intensity);
+        RefreshTuningAudio(type, value);
     }
 
-    private static void RefreshTuningAudio(TuningType type, float intensity)
+    private static void RefreshTuningAudio(TuningType type, float value)
     {
         if (!PaintingManager.CurrentPainting.Channels.TryGetValue(type, out PaintingManager.ChannelInfo channel))
         {
@@ -100,18 +100,20 @@ public class Tuner : Singleton<Tuner>
 
         if (Instance._tuningInfoList.TryGetValue(type, out TuningInfo tuningInfo) && tuningInfo.ApproximatelyEquals(channel.TargetValue))
         {
-            intensity = channel.TargetValue;
+            value = channel.TargetValue;
         }
 
+        float fmodValue = (value - channel.TargetValue) / 2;
+
         string parameterName = PaintingManager.CurrentPainting.Channels[type].FmodParameterName;
-        RuntimeManager.StudioSystem.setParameterByName(parameterName, intensity);
+        RuntimeManager.StudioSystem.setParameterByName(parameterName, fmodValue);
     }
 
-    private void ApplyTransformation(float intensity)
+    private void ApplyTransformation(float value)
     {
         foreach (PaintingObject paintingObject in _paintingObjectList)
         {
-            paintingObject.ApplyTransformation(intensity);
+            paintingObject.ApplyTransformation(value);
         }
     }
 

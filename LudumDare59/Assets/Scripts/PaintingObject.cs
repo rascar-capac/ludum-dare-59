@@ -71,15 +71,15 @@ public class PaintingObject : MonoBehaviour
         _rotationSeed = Quaternion.identity;
     }
 
-    public void ApplyTransformation(float intensity)
+    public void ApplyTransformation(float value)
     {
         //TODO: tween
-        intensity = (intensity / 2f + 0.5f) * _seedMultiplier;
-        Vector3 newPosition = _initialPosition + intensity * _translationSeed;
-        Quaternion newRotation = Quaternion.Slerp(_initialRotation, _rotationSeed, intensity);
+        value = (value / 2f + 0.5f) * _seedMultiplier;
+        Vector3 newPosition = _initialPosition + value * _translationSeed;
+        Quaternion newRotation = Quaternion.Slerp(_initialRotation, _rotationSeed, value);
         transform.SetPositionAndRotation(newPosition, newRotation);
 
-        Vector3 newScale = _initialScale + intensity * _scaleSeed;
+        Vector3 newScale = _initialScale + value * _scaleSeed;
         transform.localScale = math.abs(newScale);
     }
 }
