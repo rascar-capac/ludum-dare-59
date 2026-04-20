@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -7,10 +8,10 @@ using UnityEditor;
 
 public class PaintingObject : MonoBehaviour
 {
-    [SerializeField] private PaintingObjectParams _params;
     [SerializeField] private Vector3 _translationSeed;
     [SerializeField] private Quaternion _rotationSeed;
     [SerializeField] private Vector3 _scaleSeed;
+    [SerializeField] private float _seedMultiplier;
 
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
@@ -32,7 +33,7 @@ public class PaintingObject : MonoBehaviour
     [ContextMenu("Generate random translation seed")]
     private void GenerateTranslationSeed()
     {
-        _translationSeed = _params.GetRandomTranslation();
+        _translationSeed = Random.insideUnitSphere;
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
 #endif
@@ -41,7 +42,7 @@ public class PaintingObject : MonoBehaviour
     [ContextMenu("Generate random rotation seed")]
     private void GenerateRotationSeed()
     {
-        _rotationSeed = _params.GetRandomRotation();
+        _rotationSeed = Random.rotation;
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
 #endif
@@ -50,7 +51,7 @@ public class PaintingObject : MonoBehaviour
     [ContextMenu("Generate random scale seed")]
     private void GenerateScaleSeed()
     {
-        _scaleSeed = _params.GetRandomScale();
+        _scaleSeed = Random.insideUnitSphere;
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
 #endif
@@ -73,6 +74,7 @@ public class PaintingObject : MonoBehaviour
     public void ApplyTransformation(float intensity)
     {
         //TODO: tween
+        intensity = (intensity / 2f + 0.5f) * _seedMultiplier;
         Vector3 newPosition = _initialPosition + intensity * _translationSeed;
         Quaternion newRotation = Quaternion.Slerp(_initialRotation, _rotationSeed, intensity);
         transform.SetPositionAndRotation(newPosition, newRotation);
