@@ -9,7 +9,10 @@ using UnityEditor;
 public class PaintingObject : MonoBehaviour
 {
     [SerializeField] private Vector2 _minMaxTranslationMagnitude;
+    [SerializeField] private AnimationCurve _translationMagnitudeCurve;
     [SerializeField] private float _maxScaleDifference;
+    [SerializeField] private AnimationCurve _maxScaleDifferenceCurve;
+    [SerializeField] private bool _uniformScaling;
     [Space]
     [SerializeField, Range(-1, 1)] private float _editModeOffset;
     [Space]
@@ -36,7 +39,13 @@ public class PaintingObject : MonoBehaviour
     [ContextMenu("Generate random translation seed")]
     private void GenerateTranslationSeed()
     {
-        _translationSeed = Random.Range(_minMaxTranslationMagnitude.x, _minMaxTranslationMagnitude.y) * Random.insideUnitSphere;
+        Vector3 randomVector = Random.insideUnitSphere;
+        _translationSeed = new
+        (
+            randomVector.x * math.remap(0, 1, _minMaxTranslationMagnitude.x, _minMaxTranslationMagnitude.y, _translationMagnitudeCurve.Evaluate(Random.value)),
+            randomVector.y * math.remap(0, 1, _minMaxTranslationMagnitude.x, _minMaxTranslationMagnitude.y, _translationMagnitudeCurve.Evaluate(Random.value)),
+            randomVector.z * math.remap(0, 1, _minMaxTranslationMagnitude.x, _minMaxTranslationMagnitude.y, _translationMagnitudeCurve.Evaluate(Random.value))
+        );
 #if UNITY_EDITOR
         _editModeOffset = 0f;
         EditorUtility.SetDirty(this);
@@ -56,7 +65,22 @@ public class PaintingObject : MonoBehaviour
     [ContextMenu("Generate random scale seed")]
     private void GenerateScaleSeed()
     {
-        _scaleSeed = _maxScaleDifference * Random.insideUnitSphere;
+        Vector3 randomVector = Random.insideUnitSphere;
+
+        if (_uniformScaling)
+        {
+            float randomScale = _maxScaleDifference * _maxScaleDifferenceCurve.Evaluate(Random.value);
+            _scaleSeed = randomScale * Vector3.one;
+        }
+        else
+        {
+            _scaleSeed = new
+            (
+                randomVector.x * _maxScaleDifference * _maxScaleDifferenceCurve.Evaluate(Random.value),
+                randomVector.y * _maxScaleDifference * _maxScaleDifferenceCurve.Evaluate(Random.value),
+                randomVector.z * _maxScaleDifference * _maxScaleDifferenceCurve.Evaluate(Random.value)
+            );
+        }
 #if UNITY_EDITOR
         _editModeOffset = 0f;
         EditorUtility.SetDirty(this);
