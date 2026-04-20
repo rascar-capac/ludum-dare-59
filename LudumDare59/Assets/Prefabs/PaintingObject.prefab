@@ -169,6 +169,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PaintingObject
   _minMaxTranslationMagnitude: {x: 1, y: 10}
   _maxScaleDifference: 10
+  _editModeOffset: 0
   _translationSeed: {x: 0, y: 0, z: 0}
   _rotationSeed: {x: 0, y: 0, z: 0, w: 0}
   _scaleSeed: {x: 0, y: 0, z: 0}
+  _tunedPosition: {x: 0, y: 0, z: 0}
+  _tunedRotation: {x: 0, y: 0, z: 0, w: 0}
+  _tunedScale: {x: 0, y: 0, z: 0}

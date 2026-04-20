@@ -11,19 +11,20 @@ public class PaintingObject : MonoBehaviour
     [SerializeField] private Vector2 _minMaxTranslationMagnitude;
     [SerializeField] private float _maxScaleDifference;
     [Space]
+    [SerializeField, Range(-1, 1)] private float _editModeOffset;
+    [Space]
     [SerializeField] private Vector3 _translationSeed;
     [SerializeField] private Quaternion _rotationSeed;
     [SerializeField] private Vector3 _scaleSeed;
-
-    private Vector3 _tunedPosition;
-    private Quaternion _tunedRotation;
-    private Vector3 _tunedScale;
+    [Space]
+    [SerializeField] private Vector3 _tunedPosition;
+    [SerializeField] private Quaternion _tunedRotation;
+    [SerializeField] private Vector3 _tunedScale;
 
     private void Awake()
     {
-        _tunedPosition = transform.position;
-        _tunedRotation = transform.rotation;
-        _tunedScale = transform.localScale;
+        transform.SetPositionAndRotation(_tunedPosition, _tunedRotation);
+        transform.localScale = _tunedScale;
         Tuner.RegisterPaintingObject(this);
     }
 
@@ -37,6 +38,7 @@ public class PaintingObject : MonoBehaviour
     {
         _translationSeed = Random.Range(_minMaxTranslationMagnitude.x, _minMaxTranslationMagnitude.y) * Random.insideUnitSphere;
 #if UNITY_EDITOR
+        _editModeOffset = 0f;
         EditorUtility.SetDirty(this);
 #endif
     }
@@ -46,6 +48,7 @@ public class PaintingObject : MonoBehaviour
     {
         _rotationSeed = Random.rotation;
 #if UNITY_EDITOR
+        _editModeOffset = 0f;
         EditorUtility.SetDirty(this);
 #endif
     }
@@ -55,6 +58,7 @@ public class PaintingObject : MonoBehaviour
     {
         _scaleSeed = _maxScaleDifference * Random.insideUnitSphere;
 #if UNITY_EDITOR
+        _editModeOffset = 0f;
         EditorUtility.SetDirty(this);
 #endif
     }
@@ -71,6 +75,22 @@ public class PaintingObject : MonoBehaviour
     private void SetRotationToZero()
     {
         _rotationSeed = Quaternion.identity;
+#if UNITY_EDITOR
+        _editModeOffset = 0f;
+        EditorUtility.SetDirty(this);
+#endif
+    }
+
+    [ContextMenu("Set tuned values")]
+    private void SetTunedValues()
+    {
+        _tunedPosition = transform.position;
+        _tunedRotation = transform.rotation;
+        _tunedScale = transform.localScale;
+#if UNITY_EDITOR
+        _editModeOffset = 0f;
+        EditorUtility.SetDirty(this);
+#endif
     }
 
     public void ApplyTransformation(float offset)
@@ -85,4 +105,15 @@ public class PaintingObject : MonoBehaviour
         Vector3 newScale = _tunedScale + offset * _scaleSeed; //if offset is 1, object is scaled by _scaleSeed
         transform.localScale = math.abs(newScale);
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (!Application.isPlaying)
+        {
+            ApplyTransformation(_editModeOffset);
+            EditorUtility.SetDirty(this);
+        }
+    }
+#endif
 }
