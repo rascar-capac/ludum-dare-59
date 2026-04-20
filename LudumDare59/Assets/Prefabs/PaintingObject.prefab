@@ -167,7 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443f9a091296c4a48a2673a2e1340b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaintingObject
+  _minMaxTranslationMagnitude: {x: 1, y: 10}
+  _maxScaleDifference: 10
   _translationSeed: {x: 0, y: 0, z: 0}
   _rotationSeed: {x: 0, y: 0, z: 0, w: 0}
   _scaleSeed: {x: 0, y: 0, z: 0}
-  _seedMultiplier: 1

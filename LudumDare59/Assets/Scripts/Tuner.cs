@@ -76,11 +76,18 @@ public class Tuner : Singleton<Tuner>
             return;
         }
 
+        if (!PaintingManager.CurrentPainting.Channels.TryGetValue(type, out PaintingManager.ChannelInfo channel))
+        {
+            return;
+        }
+
+        float offsetFromTunedValue = value - channel.TunedValue;
+
         switch (type)
         {
             case TuningType.Transformation:
 
-                Instance.ApplyTransformation(value);
+                Instance.ApplyTransformation(offsetFromTunedValue);
                 break;
 
             case TuningType.None:
@@ -88,32 +95,27 @@ public class Tuner : Singleton<Tuner>
                 break;
         }
 
-        RefreshTuningAudio(type, value);
+        Instance.RefreshTuningAudio(type, offsetFromTunedValue, channel);
     }
 
-    private static void RefreshTuningAudio(TuningType type, float value)
+    private void RefreshTuningAudio(TuningType type, float offset, PaintingManager.ChannelInfo channel)
     {
-        if (!PaintingManager.CurrentPainting.Channels.TryGetValue(type, out PaintingManager.ChannelInfo channel))
+        if (_tuningInfoList.TryGetValue(type, out TuningInfo tuningInfo) && tuningInfo.ApproximatelyEquals(channel.TunedValue))
         {
-            return;
+            offset = 0f;
         }
 
-        if (Instance._tuningInfoList.TryGetValue(type, out TuningInfo tuningInfo) && tuningInfo.ApproximatelyEquals(channel.TargetValue))
-        {
-            value = channel.TargetValue;
-        }
-
-        float fmodValue = (value - channel.TargetValue) / 2;
+        float fmodValue = offset / 2;
 
         string parameterName = PaintingManager.CurrentPainting.Channels[type].FmodParameterName;
         RuntimeManager.StudioSystem.setParameterByName(parameterName, fmodValue);
     }
 
-    private void ApplyTransformation(float value)
+    private void ApplyTransformation(float offset)
     {
         foreach (PaintingObject paintingObject in _paintingObjectList)
         {
-            paintingObject.ApplyTransformation(value);
+            paintingObject.ApplyTransformation(offset);
         }
     }
 
@@ -154,7 +156,7 @@ public class Tuner : Singleton<Tuner>
                 return;
             }
 
-            if (!tuningInfo.ApproximatelyEquals(channel.TargetValue))
+            if (!tuningInfo.ApproximatelyEquals(channel.TunedValue))
             {
                 return;
             }

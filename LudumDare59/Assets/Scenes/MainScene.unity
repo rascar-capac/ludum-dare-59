@@ -712,6 +712,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5225743373281336831, guid: 64c941d93a4165743995aa493623ddac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6303795067885590284, guid: 64c941d93a4165743995aa493623ddac, type: 3}
       propertyPath: m_Name
       value: Tuner

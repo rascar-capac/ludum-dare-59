@@ -91,7 +91,7 @@ public class PaintingManager : Singleton<PaintingManager>
     [Serializable]
     public struct ChannelInfo
     {
-        public float TargetValue;
+        public float TunedValue;
         [ParamRef]
         public string FmodParameterName;
     }

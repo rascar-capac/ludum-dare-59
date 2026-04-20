@@ -8,20 +8,22 @@ using UnityEditor;
 
 public class PaintingObject : MonoBehaviour
 {
+    [SerializeField] private Vector2 _minMaxTranslationMagnitude;
+    [SerializeField] private float _maxScaleDifference;
+    [Space]
     [SerializeField] private Vector3 _translationSeed;
     [SerializeField] private Quaternion _rotationSeed;
     [SerializeField] private Vector3 _scaleSeed;
-    [SerializeField] private float _seedMultiplier;
 
-    private Vector3 _initialPosition;
-    private Quaternion _initialRotation;
-    private Vector3 _initialScale;
+    private Vector3 _tunedPosition;
+    private Quaternion _tunedRotation;
+    private Vector3 _tunedScale;
 
     private void Awake()
     {
-        _initialPosition = transform.position;
-        _initialRotation = transform.rotation;
-        _initialScale = transform.localScale;
+        _tunedPosition = transform.position;
+        _tunedRotation = transform.rotation;
+        _tunedScale = transform.localScale;
         Tuner.RegisterPaintingObject(this);
     }
 
@@ -33,7 +35,7 @@ public class PaintingObject : MonoBehaviour
     [ContextMenu("Generate random translation seed")]
     private void GenerateTranslationSeed()
     {
-        _translationSeed = Random.insideUnitSphere;
+        _translationSeed = Random.Range(_minMaxTranslationMagnitude.x, _minMaxTranslationMagnitude.y) * Random.insideUnitSphere;
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
 #endif
@@ -51,7 +53,7 @@ public class PaintingObject : MonoBehaviour
     [ContextMenu("Generate random scale seed")]
     private void GenerateScaleSeed()
     {
-        _scaleSeed = Random.insideUnitSphere;
+        _scaleSeed = _maxScaleDifference * Random.insideUnitSphere;
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
 #endif
@@ -71,15 +73,16 @@ public class PaintingObject : MonoBehaviour
         _rotationSeed = Quaternion.identity;
     }
 
-    public void ApplyTransformation(float value)
+    public void ApplyTransformation(float offset)
     {
-        //TODO: tween
-        value = (value / 2f + 0.5f) * _seedMultiplier;
-        Vector3 newPosition = _initialPosition + value * _translationSeed;
-        Quaternion newRotation = Quaternion.Slerp(_initialRotation, _rotationSeed, value);
+        //TODO: apply damping
+        Vector3 newPosition = _tunedPosition + offset * _translationSeed; //if offset is 1, object is translated by _translationSeed
+        _rotationSeed.ToAngleAxis(out float angle, out Vector3 axis);
+        if (angle > 180f) angle -= 360f;
+        Quaternion newRotation = _tunedRotation * Quaternion.AngleAxis(angle * offset, axis); //if offset 1, object has _rotationSeed as a rotation. If offset -1, object has -_rotationSeed as a rotation
         transform.SetPositionAndRotation(newPosition, newRotation);
 
-        Vector3 newScale = _initialScale + value * _scaleSeed;
+        Vector3 newScale = _tunedScale + offset * _scaleSeed; //if offset is 1, object is scaled by _scaleSeed
         transform.localScale = math.abs(newScale);
     }
 }
