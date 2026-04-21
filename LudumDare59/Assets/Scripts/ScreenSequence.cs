@@ -7,12 +7,32 @@ public class ScreenSequence : MonoBehaviour
     [SerializeField] private List<GameObject> _screenList;
     [SerializeField] private float _screenDisplayTime;
     [SerializeField] private float _timeBetweenScreens;
+    [SerializeField] private bool _isStartupSequence;
 
     private void Awake()
     {
         foreach (GameObject screen in _screenList)
         {
             screen.SetActive(false);
+        }
+
+        GameManager.OnGameReady += GameManager_OnGameReady;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameReady -= GameManager_OnGameReady;
+    }
+
+    private void GameManager_OnGameReady()
+    {
+        if (_isStartupSequence)
+        {
+            GameManager.RegisterStartupSequence(this);
+        }
+        else
+        {
+            GameManager.RegisterEndSequence(this);
         }
     }
 

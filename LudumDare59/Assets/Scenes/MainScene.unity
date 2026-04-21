@@ -119,33 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &73138038 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 393432288241859845, guid: 64c941d93a4165743995aa493623ddac, type: 3}
-  m_PrefabInstance: {fileID: 2929242671111652950}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcde528f8befa0941936755f72f3c316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!20 &330585545 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4095771487108129331, guid: 4be12782df4f54246a36dd1caec6ee25, type: 3}
   m_PrefabInstance: {fileID: 4659211354328630364}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &893253035 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5031472730691681250, guid: 64c941d93a4165743995aa493623ddac, type: 3}
-  m_PrefabInstance: {fileID: 2929242671111652950}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcde528f8befa0941936755f72f3c316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &1153206758
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,11 +214,11 @@ PrefabInstance:
     - target: {fileID: 2164221715724024073, guid: 7f16fdfc691d62842bc94988a14a79f2, type: 3}
       propertyPath: _endSequence
       value: 
-      objectReference: {fileID: 73138038}
+      objectReference: {fileID: 0}
     - target: {fileID: 2164221715724024073, guid: 7f16fdfc691d62842bc94988a14a79f2, type: 3}
       propertyPath: _startupSequence
       value: 
-      objectReference: {fileID: 893253035}
+      objectReference: {fileID: 0}
     - target: {fileID: 3106934896985420555, guid: 7f16fdfc691d62842bc94988a14a79f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -712,12 +690,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5344044544304646842, guid: 64c941d93a4165743995aa493623ddac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5344044544304646842, guid: 64c941d93a4165743995aa493623ddac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 6303795067885590284, guid: 64c941d93a4165743995aa493623ddac, type: 3}
       propertyPath: m_Name
       value: Tuner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3279242598297505328, guid: 64c941d93a4165743995aa493623ddac, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64c941d93a4165743995aa493623ddac, type: 3}

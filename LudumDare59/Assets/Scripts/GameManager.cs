@@ -9,8 +9,8 @@ using UnityEditor;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private ScreenSequence _startupSequence;
-    [SerializeField] private ScreenSequence _endSequence;
+    private ScreenSequence _startupSequence;
+    private ScreenSequence _endSequence;
 
     public bool GameIsStarted { get; private set; }
     public bool GameIsPaused { get; private set; }
@@ -42,6 +42,16 @@ public class GameManager : Singleton<GameManager>
         PaintingManager.OnAllPaintingShown -= PaintingManager_OnAllPaintingsShown;
     }
 
+    public static void RegisterStartupSequence(ScreenSequence sequence)
+    {
+        Instance._startupSequence = sequence;
+    }
+
+    public static void RegisterEndSequence(ScreenSequence sequence)
+    {
+        Instance._endSequence = sequence;
+    }
+
     public async Task StartGameAsync()
     {
         GameIsStarted = true;
@@ -60,11 +70,14 @@ public class GameManager : Singleton<GameManager>
 
     private async Task LaunchStartupSequenceAsync()
     {
+        Tuner.Instance.SetEnabledPaintingMaterial(false);
         await _startupSequence.LaunchAsync();
+        Tuner.Instance.SetEnabledPaintingMaterial(true);
     }
 
     private async Task LaunchEndSequenceAsync()
     {
+        Tuner.Instance.SetEnabledPaintingMaterial(false);
         await _endSequence.LaunchAsync(closeLastOne: false);
 
         //TODO: shutdown screen

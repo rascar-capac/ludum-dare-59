@@ -16,6 +16,8 @@ public class Tuner : Singleton<Tuner>
     [SerializeField] private Renderer _screenRenderer;
     [SerializeField] private TweenSettings<float> _screenFlashInTweenSettings;
     [SerializeField] private TweenSettings<float> _screenFlashOutTweenSettings;
+    [SerializeField] private Material _textMaterial;
+    [SerializeField] private Material _paintingMaterial;
 
     private List<PaintingObject> _paintingObjectList = new();
     private bool _isCompleting;
@@ -185,6 +187,11 @@ public class Tuner : Singleton<Tuner>
         await Task.Delay((int)(_delayAfterCompletion * 1000));
 
         _isCompleting = false;
+    }
+
+    public void SetEnabledPaintingMaterial(bool isEnabled)
+    {
+        _screenRenderer.material = isEnabled ? _paintingMaterial : _textMaterial;
     }
 
     [Serializable]
