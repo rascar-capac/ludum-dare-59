@@ -14,7 +14,7 @@ public class PaintingObject : MonoBehaviour
     [SerializeField] private AnimationCurve _maxScaleDifferenceCurve;
     [SerializeField] private bool _uniformScaling;
     [Space]
-    [SerializeField, Range(-1, 1)] private float _editModeOffset;
+    [SerializeField, Range(-2, 2)] private float _editModeOffset;
     [Space]
     [SerializeField] private Vector3 _translationSeed;
     [SerializeField] private Quaternion _rotationSeed;
