@@ -65,7 +65,7 @@ public class GameManager : Singleton<GameManager>
 
     private async Task LaunchEndSequenceAsync()
     {
-        await _endSequence.LaunchAsync();
+        await _endSequence.LaunchAsync(closeLastOne: false);
 
         //TODO: shutdown screen
     }

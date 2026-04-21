@@ -16,12 +16,12 @@ public class ScreenSequence : MonoBehaviour
         }
     }
 
-    public async Task LaunchAsync()
+    public async Task LaunchAsync(bool closeLastOne = true)
     {
-        await DisplayScreensAsync();
+        await DisplayScreensAsync(closeLastOne);
     }
 
-    private async Task DisplayScreensAsync()
+    private async Task DisplayScreensAsync(bool closeLastOne)
     {
         foreach (GameObject screen in _screenList)
         {
@@ -29,7 +29,10 @@ public class ScreenSequence : MonoBehaviour
 
             await Task.Delay((int)(_screenDisplayTime * 1000));
 
-            screen.SetActive(false);
+            if (screen != _screenList[^1] || closeLastOne)
+            {
+                screen.SetActive(false);
+            }
 
             await Task.Delay((int)(_timeBetweenScreens * 1000));
         }

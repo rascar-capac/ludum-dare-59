@@ -46,11 +46,6 @@ public class Tuner : Singleton<Tuner>
             _tuningAudioInstance = RuntimeManager.CreateInstance(PaintingManager.CurrentPainting.TuningAudio);
             _tuningAudioInstance.start();
         }
-        else if (_tuningAudioInstance.isValid())
-        {
-            _tuningAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            _tuningAudioInstance.release();
-        }
     }
 
     public static void RegisterPaintingObject(PaintingObject paintingObject)
@@ -169,7 +164,7 @@ public class Tuner : Singleton<Tuner>
     {
         _isCompleting = true;
 
-        if (_tuningAudioInstance.isValid())
+        if (_tuningAudioInstance.isValid() && PaintingManager.HasStillPaintingsToShow)
         {
             _tuningAudioInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             _tuningAudioInstance.release();

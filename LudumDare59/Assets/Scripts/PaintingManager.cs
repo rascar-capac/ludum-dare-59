@@ -15,6 +15,7 @@ public class PaintingManager : Singleton<PaintingManager>
 
     public static PaintingInfo CurrentPainting => PaintingIsLoaded ? Instance._paintings[Instance._currentPaintingIndex] : default;
     public static bool PaintingIsLoaded => Instance._paintingIsLoaded;
+    public static bool HasStillPaintingsToShow => Instance._currentPaintingIndex < Instance._paintings.Count - 1;
 
     public static event Action OnPaintingChanged;
     public static event Action OnAllPaintingShown;
