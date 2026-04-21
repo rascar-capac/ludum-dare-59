@@ -85,7 +85,7 @@ MonoBehaviour:
       _keyValueList:
       - _key: 1
         _value:
-          TunedValue: 0.1
+          TunedValue: 0.7
           FmodParameterName: Pitch
     TuningAudio:
       Guid:
