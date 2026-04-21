@@ -1,4 +1,5 @@
 // using TMPro;
+using PrimeTween;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -10,6 +11,7 @@ public class Knob : MonoBehaviour, IInteractable
     // [SerializeField] private TMP_Text _value;
     [SerializeField] private int _maxOffsetInPixels;
     [SerializeField] private float _currentValue;
+    [SerializeField] private TweenSettings _resetTweenSettings;
 
     private float _initialValue;
     private float _currentMouseOffsetX;
@@ -74,6 +76,7 @@ public class Knob : MonoBehaviour, IInteractable
         }
     }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         _currentValue = Mathf.Clamp(_currentValue, -1, 1);
@@ -83,10 +86,16 @@ public class Knob : MonoBehaviour, IInteractable
             SetValue(_currentValue);
         }
     }
+#endif
 
-    private void PaintingManager_OnPaintingChanged()
+    private async void PaintingManager_OnPaintingChanged()
     {
-        //TODO: tween and disable during it
-        SetValue(0f, notify: false);
+        Tuner.ApplyTuning(_tuningType, 0f);
+        _currentValue = 0f;
+        _isEnabled = false;
+
+        await Tween.LocalRotation(_cursor, new TweenSettings<Quaternion>(Quaternion.Euler(_cursor.localRotation.x, _cursor.localRotation.y, 0f), _resetTweenSettings));
+
+        _isEnabled = true;
     }
 }
