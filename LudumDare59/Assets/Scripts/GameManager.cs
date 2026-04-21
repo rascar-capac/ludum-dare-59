@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
+
 
 
 #if UNITY_EDITOR
@@ -9,6 +11,7 @@ using UnityEditor;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] private string _screenTextSceneName;
     private ScreenSequence _startupSequence;
     private ScreenSequence _endSequence;
 
@@ -27,6 +30,8 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
 
         PaintingManager.OnAllPaintingShown += PaintingManager_OnAllPaintingsShown;
+
+        SceneManager.LoadScene(_screenTextSceneName, LoadSceneMode.Additive);
     }
 
     private async void Start()
